@@ -1,6 +1,8 @@
 #!/bin/sh
 
+DEFAULT_INTERVAL="10"
+
 while true; do
   shuf -n 1 "$(dirname "$0")/../Noun.csv" | sed -r 's/,.*?//g' | /home/ubuntu/workspace/aquestalk-installer/aquestalkpi/AquesTalkPi -b -f - | aplay
-  sleep 10
+  sleep "$DEFAULT_INTERVAL"
 done
