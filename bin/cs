@@ -3,6 +3,8 @@
 DEFAULT_INTERVAL="10"
 
 while true; do
-  shuf -n 1 "$(dirname "$0")/../Noun.csv" | sed -r 's/,.*?//g' | /home/ubuntu/workspace/aquestalk-installer/aquestalkpi/AquesTalkPi -b -f - | aplay
+  word=$(shuf -n 1 "$(dirname "$0")/../Noun.csv")
+  echo "$word"
+  /home/ubuntu/workspace/aquestalk-installer/aquestalkpi/AquesTalkPi "$(echo "$word" | sed -r 's/,.*?//g')" | aplay --quiet
   sleep "$DEFAULT_INTERVAL"
 done
